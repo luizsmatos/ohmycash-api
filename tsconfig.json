@@ -9,7 +9,8 @@
     "baseUrl": ".",
     "paths": {
       "@config/*": ["src/config/*"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@modules/*": ["src/modules/*"],
     }
   },
   "include": ["src/**/*.ts"],
