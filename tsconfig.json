@@ -4,6 +4,7 @@
     "target": "ES2022",
     "module": "commonjs",
     "sourceMap": true,
+    "experimentalDecorators": true,
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
