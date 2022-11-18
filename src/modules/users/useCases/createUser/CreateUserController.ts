@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import { container } from 'tsyringe';
 
 import { CreateUserUseCase } from './CreateUserUseCase';
@@ -11,7 +12,7 @@ class CreateUserController {
 
     await createUserUseCase.execute({ username, password });
 
-    return response.send();
+    return response.status(StatusCodes.CREATED).send();
   }
 }
 
