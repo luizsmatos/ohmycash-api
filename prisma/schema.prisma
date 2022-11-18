@@ -15,8 +15,8 @@ model User {
   username  String   @unique()
   password  String   @db.VarChar
   accountId Int      @db.Integer
-  createdAt DateTime @default(now()) @db.Date
-  updatedAt DateTime @default(now()) @db.Date
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @default(now()) @db.Timestamp
   account   Account  @relation(fields: [accountId], references: [id])
 
   @@map("users")
@@ -25,8 +25,8 @@ model User {
 model Account {
   id              Int           @id() @default(autoincrement())
   balance         Decimal       @db.Decimal
-  createdAt       DateTime      @default(now()) @db.Date
-  updatedAt       DateTime      @default(now()) @db.Date
+  createdAt       DateTime      @default(now()) @db.Timestamp
+  updatedAt       DateTime      @default(now()) @db.Timestamp
   Users           User[]
   debitedAccount  Transaction[] @relation(name: "debitedAccount")
   creditedAccount Transaction[] @relation(name: "creditedAccount")
@@ -39,8 +39,8 @@ model Transaction {
   value             Decimal  @db.Decimal
   debitedAccountId  Int      @db.Integer
   creditedAccountId Int      @db.Integer
-  createdAt         DateTime @default(now()) @db.Date
-  updatedAt         DateTime @default(now()) @db.Date
+  createdAt         DateTime @default(now()) @db.Timestamp
+  updatedAt         DateTime @default(now()) @db.Timestamp
   debitedAccount    Account? @relation("debitedAccount", fields: [debitedAccountId], references: [id])
   creditedAccount   Account? @relation("creditedAccount", fields: [creditedAccountId], references: [id])
 
