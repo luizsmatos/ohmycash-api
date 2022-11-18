@@ -10,7 +10,8 @@
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
     "build": "tsc",
-    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles"
+    "migrate:test": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
+    "test": "dotenv -e .env.test jest --runInBand --detectOpenHandles"
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
@@ -36,6 +37,7 @@
     "prisma": "^4.6.1",
     "supertest": "^6.3.1",
     "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^4.9.3"
   },
@@ -45,6 +47,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "dotenv-cli": "^6.0.0",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "helmet": "^6.0.0",
