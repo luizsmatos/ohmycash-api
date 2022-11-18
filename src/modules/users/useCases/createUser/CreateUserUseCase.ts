@@ -1,6 +1,8 @@
 import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 
+import { User } from '@prisma/client';
+
 import { IUserRepository } from '../../repositories/IUserRepository';
 import * as CreateUserError from './CreateUserError';
 import { CreateUserPrisma } from './CreateUserPrisma';
@@ -13,7 +15,7 @@ class CreateUserUseCase {
     private userRepository: IUserRepository,
   ) {}
 
-  async execute({ username, password }: ICreateUserDTO): Promise<void> {
+  async execute({ username, password }: ICreateUserDTO): Promise<User> {
     const userAlreadyExists = await this.userRepository.findUserByUsername(username);
 
     if (userAlreadyExists) {
@@ -31,7 +33,7 @@ class CreateUserUseCase {
       },
     };
 
-    await this.userRepository.create(user);
+    return this.userRepository.create(user);
   }
 }
 
