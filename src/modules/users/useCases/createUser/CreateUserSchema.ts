@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const passwordRegExp = '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$';
+const passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/g;
 
 const CreateUserSchema = z.object({
   username: z
