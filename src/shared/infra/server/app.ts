@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import 'reflect-metadata';
 import 'express-async-errors';
 import 'dotenv/config';
+import '@shared/container';
 
 import { AppError } from '@shared/errors/AppError';
 
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(morganMiddleware);
 
-app.use(router);
+app.use('/api', router);
 
 app.use((err: Error, _request: Request, response: Response, _next: NextFunction) => {
   if (err instanceof AppError) {
