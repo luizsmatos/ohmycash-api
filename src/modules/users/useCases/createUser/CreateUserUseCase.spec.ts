@@ -1,3 +1,5 @@
+import { StatusCodes } from 'http-status-codes';
+
 import { InMemoryUserRepository } from '@modules/users/repositories/in-memory/InMemoryUserRepository';
 import { AppError } from '@shared/errors/AppError';
 
@@ -33,6 +35,6 @@ describe('Create User', () => {
         username: 'bibe@mukawe.kh',
         password: 'Bi911235',
       }),
-    ).rejects.toEqual(new AppError('Usuário já existe!'));
+    ).rejects.toEqual(new AppError('Usuário já existe!', StatusCodes.CONFLICT));
   });
 });
