@@ -71,7 +71,8 @@
           "ignoreCase": true
         }
       }
-    ]
+    ],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.ts", "**/*.test.ts"]}]
   },
   "settings": {
     "import/resolver": {

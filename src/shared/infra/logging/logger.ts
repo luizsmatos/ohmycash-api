@@ -1,12 +1,12 @@
 import winston from 'winston';
 
-const levels = Object.freeze({
-  trace: 0,
-  info: 1,
-  warn: 2,
-  error: 3,
-  fatal: 4,
-});
+const levels = {
+  error: 0,
+  warn: 1,
+  info: 2,
+  http: 3,
+  debug: 4,
+};
 
 const level = () => {
   const env = process.env.NODE_ENV || 'development';
